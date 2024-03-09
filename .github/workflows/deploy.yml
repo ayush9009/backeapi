@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -22,16 +22,16 @@ jobs:
           fi
 
       - name: Deploy code to VM
-        uses: appleboy/ssh-action@master
+        uses: ayush9009/backeapi@main
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /path/to/your/app || exit 1
+            cd D:\BackendAssignment\HelloApi || exit 1
             git pull origin main || exit 1
             npm install || exit 1
-            pm2 restart server.js || exit 1
+            pm2 restart index.js || exit 1
 
       - name: Test Deployment
         run: |
