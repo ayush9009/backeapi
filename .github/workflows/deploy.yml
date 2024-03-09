@@ -45,7 +45,7 @@ jobs:
                       npm install || exit 1
                       pm2 restart index.js || exit 1
             '@
-            ssh -i ~/.ssh/id_rsa -p $hport $uusername@$hhost "$script"
+            ssh -i ~/.ssh/id_rsa $uusername@$hhost "$script"
             echo "VM connected"
 
       - name: Deploy code to VM
