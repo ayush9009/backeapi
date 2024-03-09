@@ -13,6 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+          chmod 644 ~/.ssh/known_hosts
+
       - name: Connect VM
         shell: pwsh
         run: |
@@ -26,7 +34,7 @@ jobs:
             $hPort = 80  # Specify port 80
             echo $hhost $uusername $hport
             echo "bye1"
-            echo $private
+            echo "$private"
             
             $script = @'
                       #!/bin/bash
@@ -37,7 +45,7 @@ jobs:
                       npm install || exit 1
                       pm2 restart index.js || exit 1
             '@
-            ssh -i $private -p $hPort $uusername@$hhost "$script"
+            ssh -i ~/.ssh/id_rsa -p $hPort $uusername@$hhost "$script"
             echo "VM connected"
 
       - name: Deploy code to VM
