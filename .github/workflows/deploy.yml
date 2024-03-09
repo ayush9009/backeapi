@@ -1,4 +1,4 @@
-name: Deploy to Virtual Machine
+name: Deploy Backend API
 
 on:
   push:
@@ -16,11 +16,18 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Deploy to Virtual Machine
+      - name: Deploy code to VM
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            # Commands to deploy your code using SSH
+            cd /path/to/your/app  # Navigate to your app directory
+            git pull origin main  # Pull latest changes from main branch
+            npm install           # Install dependencies
+            pm2 restart server.js # Restart your Node.js server
+
+      - name: Test Deployment
+        run: curl http://$HOST/sayHello
+
