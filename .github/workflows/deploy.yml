@@ -17,7 +17,7 @@ jobs:
         shell: pwsh
         run: |
             echo "Running script on VM..."
-            ssh -i '12345' azureuser@20.2.74.158 "bash -s" << 'EOF'
+            ssh -i '12345' azureuser@20.2.74.158 "bash -s" > 'EOF'
             echo "VM connected"
 
       - name: Deploy code to VM
