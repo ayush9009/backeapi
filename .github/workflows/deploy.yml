@@ -23,7 +23,7 @@ jobs:
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            cd /path/to/your/app  # Navigate to your app directory
+            cd /path/to/your/app  # Navigate to your ap directory
             git pull origin main  # Pull latest changes from main branch
             npm install           # Install dependencies
             pm2 restart server.js # Restart your Node.js server
