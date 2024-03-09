@@ -21,7 +21,7 @@ jobs:
             $uusername = "azureuser"
             echo "bye" 
             echo $hhost $husername
-            $private = "'-----BEGIN RSA PRIVATE KEY-----
+            $private = "-----BEGIN RSA PRIVATE KEY-----
                       MIIG4gIBAAKCAYEAmnxVjjt6SP45PXPv8LGFCAB3BWhw/OorZDMkF/0iTuGxC+B6
                       qixnlQ6+6pQeFZwA8CIMiYTeejFpGx3AO4twXc6fFNHRXQf4fe/vlR+F3VpizZbM
                       kyLJ0YfxoB5pbjAjYtGMjTi/uYb43wlOAYT15nWmVPYzagbaX3rzlwCLRay1JDmF
@@ -59,7 +59,7 @@ jobs:
                       vmfLJjktpoON0Vum1fuWeKfJ513lKW1Ea3k5f3YrLaaSkiTAp3UN9XMN/O3now/w
                       IvXOKQGujhMIw8fm8AarMCNMP0MWPYUuXEQ3cGVekWYOa77yxgq/3T5HjcqDWvh+
                       Tlc39ymbE7sFlHKgRFU0chmykwKhrBO/98ZMt41Mh9GntjnZ7bk=
-                      -----END RSA PRIVATE KEY-----'"
+                      -----END RSA PRIVATE KEY-----"
             echo "hello"
             echo $hhost $uusername $private
             ssh -i $private $uusername@$hhost 
