@@ -17,10 +17,10 @@ jobs:
         shell: pwsh
         run: |
             echo "Running script on VM..."
-            $host = "20.2.74.158"
-            $username = "azureuser"
+            $hhost = "20.2.74.158"
+            $uusername = "azureuser"
             echo "bye" 
-            echo $host $username
+            echo $hhost $husername
             $private = "'-----BEGIN RSA PRIVATE KEY-----
                       MIIG4gIBAAKCAYEAmnxVjjt6SP45PXPv8LGFCAB3BWhw/OorZDMkF/0iTuGxC+B6
                       qixnlQ6+6pQeFZwA8CIMiYTeejFpGx3AO4twXc6fFNHRXQf4fe/vlR+F3VpizZbM
@@ -61,8 +61,8 @@ jobs:
                       Tlc39ymbE7sFlHKgRFU0chmykwKhrBO/98ZMt41Mh9GntjnZ7bk=
                       -----END RSA PRIVATE KEY-----'"
             echo "hello"
-            echo $host $username $private
-            ssh -i $private $username@$host 
+            echo $hhost $uusername $private
+            ssh -i $private $uusername@$hhost 
             echo "VM connected"
 
       - name: Deploy code to VM
