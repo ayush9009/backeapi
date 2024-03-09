@@ -21,7 +21,7 @@ jobs:
             $uusername = "azureuser"
             echo "bye" 
             echo $hhost $husername
-            $private = ${{ secrets.SSH_PRIVATE_KEY }}
+            $private = "'${{ secrets.SSH_PRIVATE_KEY }}'"
             echo "hello"
             $hPort = 80  # Specify port 80
             echo $hhost $uusername $hport
