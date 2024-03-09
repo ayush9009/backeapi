@@ -30,3 +30,8 @@ jobs:
             # npm install   # Install dependencies
             # npm run build # Build your application (if required)
             # pm2 restart server.js  # Restart your Node.js server
+            cd /path/to/your/app  # Navigate to your app directory
+            git pull origin main  # Pull latest changes from main branch
+            npm install           # Install dependencies
+            npm run build         # Build your application (if required)
+            pm2 restart server.js # Restart your Node.js server
