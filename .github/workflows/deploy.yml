@@ -17,7 +17,7 @@ jobs:
         run: npm install
 
       - name: Deploy code to VM
-        uses: appleboy/ssh-action@V3
+        uses: appleboy/ssh-action@v3
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
