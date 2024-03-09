@@ -15,11 +15,14 @@ jobs:
 
       - name: Install dependencies
         run: |
+          echo "running npm install..." 
           npm install
+          echo "npm installed before condition"
           if [ $? -ne 0 ]; then
             echo "Error: Failed to install dependencies"
             exit 1
           fi
+          echo "npm installed after if condition"
         shell: bash
 
       - name: Deploy code to VM
