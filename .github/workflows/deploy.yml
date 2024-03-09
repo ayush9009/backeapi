@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -27,7 +27,7 @@ jobs:
             echo "Running script on VM..."
             $hhost = "20.2.74.158"
             $uusername = "azureuser"
-            $private = $env:SSH_PRIVATE_KEY
+            $private = "${{ secrets.SSH_PRIVATE_KEY }}"
             echo "hello"
             echo $hhost $husername
             
@@ -40,7 +40,7 @@ jobs:
               # npm install || exit 1
               # pm2 restart index.js || exit 1
             "@
-            ssh -i "$private" "$uusername@$hhost" "$script"
+            ssh -i ~/.ssh/id_rsa $uusername@$hhost "$script"
             echo "VM connected"
 
       - name: Deploy code to VM
