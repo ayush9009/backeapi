@@ -27,7 +27,9 @@ jobs:
 
       - name: Deploy code to VM
         run: |
-            echo "Running script..."
+            echo "Running script on VM..."
+            ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -i ${{ secrets.SSH_PRIVATE_KEY }} "bash -s" << 'EOF'
+            echo "VM connected"
             cd D:\BackendAssignment\HelloApi || (echo "Failed to change directory" && exit 1)
             echo "Changed directory successfully"
             git pull origin main || (echo "Failed to pull from Git repository" && exit 1)
