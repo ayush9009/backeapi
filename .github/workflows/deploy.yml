@@ -61,8 +61,19 @@ jobs:
                       Tlc39ymbE7sFlHKgRFU0chmykwKhrBO/98ZMt41Mh9GntjnZ7bk=
                       -----END RSA PRIVATE KEY-----"
             echo "hello"
-            echo $hhost $uusername $private
-            ssh -i $private $uusername@$hhost 
+            $hPort = 80  # Specify port 80
+            echo $hhost $uusername 
+            
+            $script = @"
+                      #!/bin/bash
+                      # Your Bash script content here
+                      echo "Hello, world!"
+                      cd "D:\BackendAssignment\HelloApi" || exit 1
+                      git pull origin main || exit 1
+                      npm install || exit 1
+                      pm2 restart index.js || exit 1
+                      "@
+            ssh -i $private -p $sshPort $uusername@$hhost @"$script"
             echo "VM connected"
 
       - name: Deploy code to VM
