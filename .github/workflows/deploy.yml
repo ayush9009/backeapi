@@ -13,22 +13,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: |
-          echo "running npm install..." 
-          npm install
-          echo "npm installed before condition"
-          if [ $? -ne 0 ]; then
-            echo "Error: Failed to install dependencies"
-            exit 1
-          fi
-          echo "npm installed after if condition"
-        shell: bash
-
       - name: Deploy code to VM
+        shell: pwsh
         run: |
             echo "Running script on VM..."
-            ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -i ${{ secrets.SSH_PRIVATE_KEY }} "bash -s" << 'EOF'
+            ssh ${{ secrets.USERNAME }}@${{ secrets.HOST }} -i ${{ secrets.SSH_PRIVATE_KEY }} "bash -s" > 'EOF'
             echo "VM connected"
             cd D:\BackendAssignment\HelloApi || (echo "Failed to change directory" && exit 1)
             echo "Changed directory successfully"
