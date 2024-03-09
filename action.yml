@@ -1,0 +1,5 @@
+name: 'Deploy Backend API'
+description: 'Deploy code to VM and test deployment'
+runs:
+  using: 'node12'
+  main: 'index.js'
