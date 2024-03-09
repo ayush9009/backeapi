@@ -27,14 +27,13 @@ jobs:
             echo "Running script on VM..."
             $hhost = "20.2.74.158"
             $uusername = "azureuser"
-            echo "bye" 
+            echo "hello"
             echo $hhost $husername
             $private = "${{ secrets.SSH_PRIVATE_KEY }}"
-            echo "hello"
             $hPort = 80  # Specify port 80
             echo $hhost $uusername $hport
             echo "bye1"
-            echo "$private"
+            # echo "$private"
             
             $script = @'
                       #!/bin/bash
