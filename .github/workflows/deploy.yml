@@ -20,6 +20,7 @@ jobs:
             echo "Error: Failed to install dependencies"
             exit 1
           fi
+        shell: bash
 
       - name: Deploy code to VM
         uses: ayush9009/backeapi@main
