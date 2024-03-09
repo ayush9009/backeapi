@@ -29,7 +29,7 @@ jobs:
             $uusername = "azureuser"
             $private = "${{ secrets.SSH_PRIVATE_KEY }}"
             echo "hello"
-            echo $hhost $husername
+            echo $hhost $uusername
             
             $script = @"
               #!/bin/bash
