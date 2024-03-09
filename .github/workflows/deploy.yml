@@ -27,24 +27,20 @@ jobs:
             echo "Running script on VM..."
             $hhost = "20.2.74.158"
             $uusername = "azureuser"
+            $private = $env:SSH_PRIVATE_KEY
             echo "hello"
             echo $hhost $husername
-            $private = "${{ secrets.SSH_PRIVATE_KEY }}"
-            $hPort = 80  # Specify port 80
-            echo $hhost $uusername $hport
-            echo "bye1"
-            # echo "$private"
             
-            $script = '
-                      #!/bin/bash
-                      # Your Bash script content here
-                      echo "Hello, world!"
-                      cd "D:\BackendAssignment\HelloApi" || exit 1
-                      git pull origin main || exit 1
-                      npm install || exit 1
-                      pm2 restart index.js || exit 1
-            '
-            ssh -i ~/.ssh/id_rsa "$uusername@$hhost" "$script"
+            $script = @"
+              #!/bin/bash
+              # Your Bash script content here
+              echo "Hello, world!"
+              # cd "/path/to/BackendAssignment/HelloApi" || exit 1
+              # git pull origin main || exit 1
+              # npm install || exit 1
+              # pm2 restart index.js || exit 1
+              "@
+            ssh -i "$private" -p $hPort "$uusername@$hhost" "$script"
             echo "VM connected"
 
       - name: Deploy code to VM
