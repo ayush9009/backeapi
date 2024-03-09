@@ -1,0 +1,32 @@
+name: Deploy Backend API
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Deploy code to VM
+        uses: appleboy/ssh-action@main
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            # Commands to deploy code on VM
+            # Example: 
+            # cd /path/to/your/app
+            # git pull origin main
+            # npm install   # Install dependencies
+            # npm run build # Build your application (if required)
+            # pm2 restart server.js  # Restart your Node.js server
