@@ -17,8 +17,8 @@ jobs:
         shell: pwsh
         run: |
             echo "Running script on VM..."
-            $host: ${{ secrets.HOST }}
-            $username: ${{ secrets.USERNAME }}
+            $host: "20.2.74.158"
+            $username: "azureuser"
             echo "bye" 
             echo $host $username
             $private: "-----BEGIN RSA PRIVATE KEY-----
