@@ -64,7 +64,7 @@ jobs:
             $hPort = 80  # Specify port 80
             echo $hhost $uusername 
             
-            $script = @"
+            $script = @'
                       #!/bin/bash
                       # Your Bash script content here
                       echo "Hello, world!"
@@ -72,7 +72,7 @@ jobs:
                       git pull origin main || exit 1
                       npm install || exit 1
                       pm2 restart index.js || exit 1
-                      "@
+            '@
             ssh -i $private -p $sshPort $uusername@$hhost "$script"
             echo "VM connected"
 
