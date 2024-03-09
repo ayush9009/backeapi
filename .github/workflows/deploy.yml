@@ -8,10 +8,18 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20.x'
 
       - name: Install dependencies
         run: npm install
@@ -30,4 +38,3 @@ jobs:
 
       - name: Test Deployment
         run: curl http://$HOST/sayHello
-
