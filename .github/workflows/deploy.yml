@@ -16,8 +16,11 @@ jobs:
       
       - name: Set up SSH key
         run: |
-          mkdir C:\Users\USERNAME\.ssh
-          echo "$SSH_PRIVATE_KEY" > C:\Users\USERNAME\.ssh\id_rsa
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+
+
           
       - name: Connect VM
         shell: pwsh
