@@ -13,31 +13,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      
       - name: Set up SSH key
         run: |
-          mkdir C:\Users\DEEL\.ssh
-          echo "$SSH_PRIVATE_KEY" > C:\Users\DEEL\.ssh\id_rsa
-          # Replace DEEL with your Windows username
-          # Note: Windows uses backslashes (\) in file paths instead of forward slashes (/)
-          # Ensure that the private key content is properly echoed to the file.
-          # It's important to maintain the correct line endings (LF) for the SSH key.
-
-          # Due to file permissions on Windows, you may grant permission using the following command
-          C:\Windows\System32\icacls.exe C:\Users\DEEL\.ssh\id_rsa /grant:r "%USERNAME%:R"
-          echo "hello"
-          # This command grants read permissions to the currently logged-in user for the id_rsa file.
-          # Adjust the path and permissions as needed
+          mkdir C:\Users\USERNAME\.ssh
+          echo "$SSH_PRIVATE_KEY" > C:\Users\USERNAME\.ssh\id_rsa
           
-      - name: Connect VM 
+      - name: Connect VM
         shell: pwsh
         run: |
-              echo "Running script on VM..."
-              $hhost = "20.2.74.158"
-              $uusername = "azureuser"
-              $private = "${{ secrets.SSH_PRIVATE_KEY }}"
-              echo "hello"
-              echo $hhost $uusername
-              # Ensure that the PowerShell commands are valid for your use case and environment.
+            echo "Running script on VM..."
+            $hhost = "20.2.74.158"
+            $uusername = "azureuser"
+            echo "helloyo"
+            $private = "${{ secrets.SSH_PRIVATE_KEY }}"
+            echo "hello"
+            echo $hhost $uusername              # Ensure that the PowerShell commands are valid for your use case and environment.
 
             
             $script = @"
