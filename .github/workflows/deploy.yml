@@ -24,6 +24,7 @@ jobs:
 
           # Due to file permissions on Windows, you may grant permission using the following command
           C:\Windows\System32\icacls.exe C:\Users\DEEL\.ssh\id_rsa /grant:r "%USERNAME%:R"
+          echo "hello"
           # This command grants read permissions to the currently logged-in user for the id_rsa file.
           # Adjust the path and permissions as needed
           
