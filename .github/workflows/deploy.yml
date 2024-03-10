@@ -16,16 +16,16 @@ jobs:
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "$SSH_PRIVATE_KEY" > ../private.key
-          chmod 600 ../private.key
-          echo "Private key file created"
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          echo "SSH private key is set up."
 
-      - name: Check SSH Private Key
+      - name: Verify SSH private key
         run: |
-          if grep -q "BEGIN RSA PRIVATE KEY" ../private.key && grep -q "END RSA PRIVATE KEY" ../private.key; then
-            echo "Private key file contains SSH private key."
+          if [[ -s ~/.ssh/id_rsa ]]; then
+            echo "SSH private key is not empty."
           else
-            echo "Error: Private key file does not contain SSH private key."
+            echo "Error: SSH private key is empty or missing."
             exit 1
           fi
 
@@ -50,7 +50,7 @@ jobs:
               # npm install || exit 1
               # pm2 restart index.js || exit 1
             "@
-            ssh -i ../private.key $uusername@$hhost "$script"
+            ssh -i ~/.ssh/id_rsa $uusername@$hhost "$script"
             echo "VM connected"
 
       - name: Deploy code to VM
