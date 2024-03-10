@@ -13,16 +13,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ../private.key
           chmod 600 ../private.key
-          echo "hello"
+          echo "Private key file created"
 
+      - name: Check SSH Private Key
+        run: |
+          if grep -q "BEGIN RSA PRIVATE KEY" ../private.key && grep -q "END RSA PRIVATE KEY" ../private.key; then
+            echo "Private key file contains SSH private key."
+          else
+            echo "Error: Private key file does not contain SSH private key."
+            exit 1
+          fi
 
-          
       - name: Connect VM
         shell: pwsh
         run: |
