@@ -20,14 +20,6 @@ jobs:
           chmod 600 ~/.ssh/id_rsa
           echo "SSH private key is set up."
 
-      - name: Verify SSH private key
-        run: |
-          if [[ -s ~/.ssh/id_rsa ]]; then
-            echo "SSH private key is not empty."
-          else
-            echo "Error: SSH private key is empty or missing."
-            exit 1
-          fi
 
       - name: Connect VM
         shell: pwsh
