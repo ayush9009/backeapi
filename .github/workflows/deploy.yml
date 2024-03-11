@@ -27,6 +27,7 @@ jobs:
           uusername="azureuser"
           echo "hello"
           echo "$hhost $uusername"
+          ssh-keyscan -H "$hhost" >> ~/.ssh/known_hosts
           ssh -i ~/.ssh/id_rsa "$uusername@$hhost" "echo 'VM connected'"
             
             $script = @"
