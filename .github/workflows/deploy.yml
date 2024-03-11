@@ -18,7 +18,6 @@ jobs:
           mkdir -p ~/.ssh
           echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh-keyscan -H 20.2.74.158 >> ~/.ssh/known_hosts
           echo "SSH private key is set up."
 
       - name: Connect VM
@@ -28,7 +27,7 @@ jobs:
           uusername="azureuser"
           echo "hello"
           echo "$hhost $uusername"
-          ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa "$uusername@$hhost" "echo 'VM connected'"
+          ssh -i ~/.ssh/id_rsa "$uusername@$hhost" "echo 'VM connected'"
             
             $script = @"
               #!/bin/bash
