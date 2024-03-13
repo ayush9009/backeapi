@@ -3,7 +3,7 @@ const express=require('express');
 const PORT=80;
 const app=express();
 
-//route
+//rout
 
 app.get('/sayHello',(req,res)=>{
     res.json({message:'Hello User'});
